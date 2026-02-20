@@ -1,4 +1,4 @@
-const BASE_URL = "https://banking-service-u7zt.onrender.com/api/accounts";
+const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8080/api/accounts";
 
 export async function getAccounts(params) {
     try {
