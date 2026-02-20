@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deposit, withdraw, suspendAccount } from "../api";
+import { deposit, withdraw, suspendAccount, unsuspendAccount } from "../api";
 
 function AccountList({ accounts, refreshAccounts }) {
   const [amounts, setAmounts] = useState({});
@@ -34,6 +34,15 @@ function AccountList({ accounts, refreshAccounts }) {
       refreshAccounts();
     } catch (err) {
       alert(err.message || "Suspend failed");
+    }
+  };
+
+  const handleUnsuspend = async (id) => {
+    try {
+      await unsuspendAccount(id);
+      refreshAccounts();
+    } catch (err) {
+      alert(err.message || "Unsuspend failed");
     }
   };
 
@@ -74,10 +83,15 @@ function AccountList({ accounts, refreshAccounts }) {
             Withdraw
           </button>
 
-          <button onClick={() => handleSuspend(acc.id)}
-            className="btn-danger">
-            Suspend
-          </button>
+          {acc.status === "SUSPENDED" ? (
+            <button onClick={() => handleUnsuspend(acc.id)} className="btn-primary">
+              Unsuspend
+            </button>
+          ) : (
+            <button onClick={() => handleSuspend(acc.id)} className="btn-danger">
+              Suspend
+            </button>
+          )}
         </div>
       ))}
     </div>

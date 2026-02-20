@@ -81,3 +81,20 @@ export async function suspendAccount(id) {
         throw error;
     }
 }
+
+export async function unsuspendAccount(id) {
+    try {
+        const res = await fetch(`${BASE_URL}/${id}/unsuspend`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+        });
+        if (!res.ok) {
+            const error = await res.json();
+            throw new Error(error.error || "Failed to unsuspend account");
+        }
+        return await res.json();
+    } catch (error) {
+        console.error("Error unsuspending account:", error);
+        throw error;
+    }
+}
