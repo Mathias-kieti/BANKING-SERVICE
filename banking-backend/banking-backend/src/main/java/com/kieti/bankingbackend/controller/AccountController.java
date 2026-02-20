@@ -94,6 +94,16 @@ public class AccountController {
     }
 
     /**
+     * Unsuspend account
+     * POST /api/accounts/{id}/unsuspend
+     */
+    @PostMapping("/{id}/unsuspend")
+    public ResponseEntity<AccountResponse> unsuspendAccount(@PathVariable Long id) {
+        AccountResponse response = accountService.unsuspendAccount(id);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
      * Global exception handler for BankingException
      */
     @ExceptionHandler(Exception.class)

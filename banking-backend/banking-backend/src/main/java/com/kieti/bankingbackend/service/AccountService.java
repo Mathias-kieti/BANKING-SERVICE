@@ -152,6 +152,20 @@ public class AccountService {
     }
 
     /**
+     * Unsuspend account
+     * Status becomes ACTIVE
+     */
+    @Transactional
+    public AccountResponse unsuspendAccount(Long id) {
+        Account account = accountRepository.findById(id)
+                .orElseThrow(() -> new BankingException("Account not found with id: " + id));
+
+        account.setStatus("ACTIVE");
+        Account savedAccount = accountRepository.save(account);
+        return AccountResponse.fromEntity(savedAccount);
+    }
+
+    /**
      * Generate unique account number
      */
     private String generateAccountNumber() {
