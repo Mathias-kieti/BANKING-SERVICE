@@ -1,9 +1,11 @@
 package com.kieti.bankingbackend.repository;
 
-import com.kieti.bankingbackend.entity.Account;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.Optional;
+
+import com.kieti.bankingbackend.entity.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {

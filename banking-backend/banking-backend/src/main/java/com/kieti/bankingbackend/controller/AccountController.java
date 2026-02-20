@@ -23,7 +23,7 @@ import com.kieti.bankingbackend.service.AccountService;
 
 @RestController
 @RequestMapping("/api/accounts")
-@CrossOrigin(origins = {"http://localhost:3000", "https://your-frontend-url.vercel.app"})
+@CrossOrigin(origins = {"http://localhost:3000", "https://mybankingservices.netlify.app"})
 public class AccountController {
 
     @Autowired
