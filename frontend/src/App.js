@@ -21,11 +21,18 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Banking Operating System</h1>
-      <CreateAccount onAccountCreated={fetchAccounts} />
-      <AccountList accounts={accounts} refreshAccounts={fetchAccounts} />
-    </div>
+    <>
+      <header className="top-bar">
+        <div className="container">
+          <h1>Banking Operating System</h1>
+        </div>
+      </header>
+
+      <div className="container">
+        <CreateAccount onAccountCreated={fetchAccounts} />
+        <AccountList accounts={accounts} refreshAccounts={fetchAccounts} />
+      </div>
+    </>
   );
 }
 
