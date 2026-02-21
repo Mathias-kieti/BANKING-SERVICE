@@ -29,9 +29,9 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    /**
-     * Create a new account
-     * POST /api/accounts
+    /*
+      Create a new account
+      POST /api/accounts
      */
     @PostMapping
     public ResponseEntity<AccountResponse> createAccount(@RequestBody CreateAccountRequest request) {
@@ -39,9 +39,9 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    /**
-     * Get all accounts
-     * GET /api/accounts
+    /*
+     Get all accounts
+     GET /api/accounts
      */
     @GetMapping
     public ResponseEntity<List<AccountResponse>> getAllAccounts() {
@@ -49,9 +49,9 @@ public class AccountController {
         return ResponseEntity.ok(accounts);
     }
 
-    /**
-     * Get account by ID
-     * GET /api/accounts/{id}
+    /*
+      Get account by ID
+      GET /api/accounts/{id}
      */
     @GetMapping("/{id}")
     public ResponseEntity<AccountResponse> getAccountById(@PathVariable Long id) {
@@ -59,9 +59,9 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
-    /**
-     * Deposit money to account
-     * POST /api/accounts/{id}/deposit
+    /*
+     Deposit money to account
+     POST /api/accounts/{id}/deposit
      */
     @PostMapping("/{id}/deposit")
     public ResponseEntity<AccountResponse> deposit(
@@ -71,9 +71,9 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
-    /**
-     * Withdraw money from account
-     * POST /api/accounts/{id}/withdraw
+    /*
+     Withdraw money from account
+     POST /api/accounts/{id}/withdraw
      */
     @PostMapping("/{id}/withdraw")
     public ResponseEntity<AccountResponse> withdraw(
@@ -83,9 +83,9 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
-    /**
-     * Suspend account
-     * POST /api/accounts/{id}/suspend
+    /*
+     Suspend account
+     POST /api/accounts/{id}/suspend
      */
     @PostMapping("/{id}/suspend")
     public ResponseEntity<AccountResponse> suspendAccount(@PathVariable Long id) {
@@ -93,9 +93,9 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
-    /**
-     * Unsuspend account
-     * POST /api/accounts/{id}/unsuspend
+    /*
+     Unsuspend account
+     POST /api/accounts/{id}/unsuspend
      */
     @PostMapping("/{id}/unsuspend")
     public ResponseEntity<AccountResponse> unsuspendAccount(@PathVariable Long id) {
@@ -103,8 +103,8 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
-    /**
-     * Global exception handler for BankingException
+    /*
+     Global exception handler for BankingException
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleException(Exception e) {
